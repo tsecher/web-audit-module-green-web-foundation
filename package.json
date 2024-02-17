@@ -1,0 +1,8 @@
+{
+  "name": "web-audit-module-green-web-foundation",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {},
+  "version": "0.0.0"
+}
