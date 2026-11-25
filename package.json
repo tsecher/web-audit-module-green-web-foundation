@@ -3,6 +3,13 @@
   "main": "index.js",
   "license": "MIT",
   "type": "module",
-  "dependencies": {},
+  "keywords": [
+    "web-audit",
+    "web-audit-plugin",
+    "green-web-foundation"
+  ],
+  "dependencies": {
+    "web_audit": "^5.0"
+  },
   "version": "1.0.0"
 }

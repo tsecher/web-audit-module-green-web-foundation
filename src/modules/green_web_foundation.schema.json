@@ -1,0 +1,47 @@
+{
+    "id": "green_web_foundation",
+    "label": "Green Web Foundation",
+    "description": "Green web foundations",
+    "types": [
+      "domain"
+    ],
+    "structure": {
+      "green_web_foundation": {
+        "label": "Domain location",
+        "description": "The domain location information",
+        "structure": {
+          "url": {
+            "label": "Url",
+            "description": "The audited page",
+            "type": "string"
+          },
+          "hosted_by": {
+            "label": "Hosted by",
+            "description": "The hosting company.",
+            "type": "string"
+          },
+			    "hosted_by_website": {
+            "label": "Hosted by website",
+            "description": "The website of the hosting company.",
+            "type": "string"
+          },
+			    "partner": {
+            "label": "Partner",
+            "description": "The partner status.",
+            "type": "string"
+          },
+			    "green": {
+            "label": "Green",
+            "description": "The green status.",
+            "type": "bool"
+          },
+			    "hosted_by_id": {
+            "label": "Hosted by ID",
+            "description": "The hosting company ID.",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+  

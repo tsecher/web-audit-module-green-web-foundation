@@ -1,5 +1,6 @@
 import {AbstractDomainModule} from 'web_audit/dist/domain/AbstractDomainModule.js';
 import {ModuleEvents} from 'web_audit/dist/modules/ModuleInterface.js';
+import schema from "./green_web_foundation.schema.json" with {type: "json"};
 
 /**
  * Green Web Foundation Module events.
@@ -31,18 +32,18 @@ export default class GreenWebFoundationModule extends AbstractDomainModule {
 	/**
 	 * {@inheritdoc}
 	 */
+	getSchema() {
+		return schema;
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
 	async init(context) {
 		this.context = context;
 
 		// Install store.
-		this.context.config.storage?.installStore('green_web_foundation', this.context, {
-			url: 'URL',
-			hosted_by: 'Hosted by', // eslint-disable-line @typescript-eslint/naming-convention
-			hosted_by_website: 'Hosted by website', // eslint-disable-line @typescript-eslint/naming-convention
-			partner: 'Partner',
-			green: 'Green',
-			hosted_by_id: 'Hosted by ID', // eslint-disable-line @typescript-eslint/naming-convention
-		});
+		this.context.config.storage?.installSchema(this, this.context);
 
 		// Emit.
 		this.context.eventBus.emit(GreenWebFoundationModuleEvents.createGreenWebFoundationModule, {module: this});
@@ -73,9 +74,9 @@ export default class GreenWebFoundationModule extends AbstractDomainModule {
 			});
 			this.context?.eventBus.emit(ModuleEvents.onAnalyseResult, {module: this, url: urlWrapper, result: result});
 
-			this.context?.config?.logger.result(`Green Web Foundation`, summary, urlWrapper.url.toString());
+			this.context?.config?.logger.result(this.name, summary, urlWrapper.url.toString());
 			// @ts-ignore
-			this.context?.config?.storage?.one('green_web_foundation', this.context, result);
+			this.context?.config?.storage?.one(this, 'green_web_foundation', this.context, result);
 
 			this.context?.eventBus.emit(ModuleEvents.endsComputing, {module: this});
 
